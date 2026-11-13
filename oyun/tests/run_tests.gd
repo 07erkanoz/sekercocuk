@@ -355,7 +355,7 @@ func test_bolum_1_yapisi() -> void:
 	root.add_child(b)
 	await kare(3)
 	dogrula(b.oyuncu != null, "bölüm 1'de Oyuncu yok")
-	dogrula(b.toplam_seker >= 20, "bölüm 1'de en az 20 şeker olmalı (%d)" % b.toplam_seker)
+	dogrula(b.toplam_seker >= 80, "bölüm 1'de en az 80 şeker olmalı (%d)" % b.toplam_seker)
 	var bitis_sayisi := 0
 	for n in get_nodes_in_group("bitis"):
 		if b.is_ancestor_of(n):
@@ -365,9 +365,9 @@ func test_bolum_1_yapisi() -> void:
 	for n in get_nodes_in_group("dusman"):
 		if b.is_ancestor_of(n):
 			dusman += 1
-	dogrula(dusman >= 1, "bölüm 1'de düşman yok")
+	dogrula(dusman >= 3, "bölüm 1'de en az 3 düşman olmalı (%d)" % dusman)
 	dogrula(get_nodes_in_group("tehlike").size() >= 2, "bölüm 1'de diken ve çukur olmalı")
-	dogrula(get_nodes_in_group("kontrol_noktasi").size() >= 1, "bölüm 1'de kontrol noktası yok")
+	dogrula(get_nodes_in_group("kontrol_noktasi").size() >= 2, "bölüm 1'de en az 2 kontrol noktası olmalı")
 
 
 ## Basit bir "bot" sağa koşar; önünde boşluk, diken ya da düşman görünce zıplar.
@@ -400,6 +400,7 @@ func test_bolum_1_bastan_sona_oynanabilir() -> void:
 	print("    bot: %.1f sn, şeker %d/%d, can %d" % [sure, b.seker_sayisi, b.toplam_seker, o.can])
 	dogrula(tamam[0], "bot bölümü bitiremedi (x=%.0f, can=%d)" % [o.global_position.x, o.can])
 	dogrula(sure < 120.0, "bölüm 2 dakikadan uzun sürdü")
+	dogrula(sure >= 40.0, "bot bölümü çok kısa sürede bitirdi (%.1f sn < 40 sn)" % sure)
 
 
 func _bot_ziplamali(o: Oyuncu, uzay: PhysicsDirectSpaceState2D) -> bool:
