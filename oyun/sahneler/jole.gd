@@ -21,6 +21,7 @@ var _baslangic_x := 0.0
 
 
 func _ready() -> void:
+	Hiza.gorseli_tabana_oturt(self)
 	add_to_group("dusman")
 	_baslangic_x = global_position.x
 	yon = 1 if baslangic_yonu >= 0 else -1
