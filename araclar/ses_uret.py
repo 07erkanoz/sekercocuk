@@ -93,6 +93,40 @@ def dugme():
     return ton(0.05, 900, 600, azal=5, son=0.01, ilk=0.001)
 
 
+def kutu():
+    """Sürpriz kutusuna kafa vurma: kısa, tok 'tok' ve üstüne küçük bir çın."""
+    a = ton(0.09, 240, 150, dalga="yumusak", azal=6, son=0.02, ilk=0.001)
+    b = ton(0.12, hz(84), azal=8, son=0.02)
+    return karistir([(a, 0.0), ([v * 0.5 for v in b], 0.03)], 0, 0.16)
+
+
+def yay():
+    """Jöle yay: aşağıdan yukarı kayan, titreşimli 'boing'."""
+    n = int(0.42 * SR)
+    faz, out = 0.0, []
+    for i in range(n):
+        t = i / n
+        f = 180 + 520 * t + 40 * math.sin(2 * math.pi * 18 * t * 0.42)
+        faz += 2 * math.pi * f / SR
+        out.append(math.sin(faz) * math.exp(-3.0 * t) * min(1.0, i / (0.004 * SR)))
+    return out
+
+
+def ezme():
+    """Jöleyi ezme: yumuşak, aşağı inen 'şlop' ve iki notalık ödül sesi."""
+    a = ton(0.12, 520, 160, dalga="yumusak", azal=4, son=0.03, ilk=0.002)
+    b = ton(0.1, hz(83), azal=6, son=0.02)
+    c = ton(0.14, hz(88), azal=6, son=0.03)
+    return karistir([(a, 0.0), ([v * 0.6 for v in b], 0.08), ([v * 0.6 for v in c], 0.16)], 0, 0.32)
+
+
+def kalp():
+    """Can / gizli köşe: yukarı çıkan parlak arpej."""
+    parca = [(ton(0.16, hz(m), azal=4, son=0.03, dalga="yumusak"), b)
+             for m, b in [(76, 0.0), (79, 0.07), (84, 0.14), (88, 0.21)]]
+    return karistir(parca, 0, 0.42)
+
+
 def muzik():
     bpm = 120
     vurus = 60 / bpm
@@ -130,7 +164,8 @@ def muzik():
 def main():
     os.makedirs(HEDEF, exist_ok=True)
     for ad, f in [("zipla", zipla), ("seker", seker), ("hasar", hasar),
-                  ("bitis", bitis), ("dugme", dugme)]:
+                  ("bitis", bitis), ("dugme", dugme), ("kutu", kutu), ("yay", yay),
+                  ("ezme", ezme), ("kalp", kalp)]:
         yaz(ad, normalle(f()))
     yaz("muzik", muzik())
     if shutil.which("ffmpeg"):

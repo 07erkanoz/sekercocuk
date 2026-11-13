@@ -69,7 +69,8 @@ func ez(oyuncu: Oyuncu = null) -> void:
 	if oyuncu != null:
 		oyuncu.sek()
 	ezildi.emit()
-	Ses.cal("seker")
+	Ses.cal("ezme")
+	Parilti.patlat(self, global_position + Vector2(0, -10), 12, 10.0)
 	collision_layer = 0
 	vurus.set_deferred("monitoring", false)
 	var t := create_tween()

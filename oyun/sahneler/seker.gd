@@ -18,6 +18,7 @@ func _govde_girdi(govde: Node2D) -> void:
 	alindi = true
 	toplandi.emit()
 	Ses.cal("seker")
+	Parilti.patlat(self, global_position, 8, 7.0)
 	set_deferred("monitoring", false)
 	var t := create_tween()
 	t.set_parallel(true)
