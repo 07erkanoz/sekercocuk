@@ -24,6 +24,7 @@ const TEPE_YAKIN := Color("5ec9b3")
 const YAPRAK := Color("c8f6c9")
 
 # Kurabiye zemin ve platformlar
+const PLATFORM_PINK := Color(1.0, 0.7, 0.85)
 const HAMUR_ACIK := Color("ffc16b")
 const HAMUR_KOYU := Color("df8549")
 const KIRINTI := Color("b76b3e")
@@ -81,7 +82,7 @@ const PEMBE_BITKI := Color("ffadd7")
 # Yarı saydam tonlar
 const GOLGE := Color(0.129, 0.090, 0.176, 0.16)
 const PERDE := Color(0.129, 0.090, 0.176, 0.45)
-const BOS_KALP := Color(0.129, 0.090, 0.176, 0.15)
+const BOS_KALP := Color(0.35, 0.35, 0.4, 0.45)
 
 
 ## Bir palet renginin saydamlığını değiştirir.

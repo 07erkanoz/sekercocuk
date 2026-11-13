@@ -13,5 +13,5 @@ func _draw() -> void:
 	if t == null:
 		return
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2(1.5, 1.5))
-	draw_texture(t, -t.get_size() * 0.5, Color.WHITE if dolu else Color(0.35, 0.35, 0.4, 0.45))
+	draw_texture(t, -t.get_size() * 0.5, Renkler.BEYAZ if dolu else Renkler.BOS_KALP)
 	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
