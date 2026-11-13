@@ -1,10 +1,11 @@
 extends CanvasLayer
-## Bölüm bitti ekranı: toplanan şeker, (varsa) Sonraki Bölüm, Tekrar Oyna, Ana Menü.
+## Bölüm bitti ekranı: toplanan şeker, puan, (varsa) Sonraki Bölüm, Tekrar Oyna, Ana Menü.
 
 const SEKER := preload("res://sahneler/gorsel/seker_gorsel.tscn")
 
 var dugmeler: Array[Button] = []
 var sonuc_etiketi: Label
+var puan_etiketi: Label
 
 
 func _ready() -> void:
@@ -12,7 +13,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
-func goster(toplanan: int, toplam: int) -> void:
+func goster(toplanan: int, toplam: int, puan: int = -1) -> void:
 	var kok := MenuKurucu.kok(self, true)
 	var kutu := MenuKurucu.panel(kok, "Bölüm Bitti!")
 	var satir := HBoxContainer.new()
@@ -34,6 +35,11 @@ func goster(toplanan: int, toplam: int) -> void:
 		var tebrik := MenuKurucu.etiket("Hepsini topladın, harika!", 28)
 		kutu.add_child(tebrik)
 		kutu.move_child(tebrik, 2)
+	if puan >= 0:
+		puan_etiketi = MenuKurucu.etiket("Puan: %d" % puan, 34)
+		puan_etiketi.name = "Puan"
+		kutu.add_child(puan_etiketi)
+		kutu.move_child(puan_etiketi, 2)
 	if Gecis.sonraki_var():
 		dugmeler.append(MenuKurucu.dugme(kutu, "Sonraki Bölüm", func() -> void: Gecis.sonraki_bolum()))
 	dugmeler.append(MenuKurucu.dugme(kutu, "Tekrar Oyna", func() -> void: Gecis.yeniden_baslat()))

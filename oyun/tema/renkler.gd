@@ -79,6 +79,18 @@ const BITKI := Color("72e886")
 const MOR_BITKI := Color("bc8de4")
 const PEMBE_BITKI := Color("ffadd7")
 
+# Sürpriz kutusu ve yay
+const KUTU := Color("ffcf45")
+const KUTU_ACIK := Color("fff09a")
+const KUTU_KOYU := Color("f5a531")
+const KUTU_BOS := Color("e9bf92")
+const KUTU_BOS_KOYU := Color("c98f62")
+
+# Paralaks katmanları (arka plan resminin önünde kayar)
+const BULUT_UZAK := Color(1.0, 0.965, 0.945, 0.85)
+const TEPE_PARALAKS := Color("9fe6d6")
+const TEPE_PARALAKS_YAKIN := Color("78d8c4")
+
 # Yarı saydam tonlar
 const GOLGE := Color(0.129, 0.090, 0.176, 0.16)
 const PERDE := Color(0.129, 0.090, 0.176, 0.45)

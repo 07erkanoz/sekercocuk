@@ -10,6 +10,13 @@ extends Node2D
 
 var _zaman := 0.0
 
+const SAP_KALINLIGI := 7.0
+
+
+## Görünen alan (yerel): sap tabanı y=0, tepede lolipop başı.
+func gorunen_alan() -> Rect2:
+	return Rect2(-34.0, -86.0 - 37.0, 68.0, 86.0 + 37.0)
+
 
 func _process(delta: float) -> void:
 	if aktif:
@@ -18,7 +25,7 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	Cizim.cubuk(self, Vector2(0, 0), Vector2(0, -70), Renkler.LOLIPOP_SAP, 7.0)
+	Cizim.dikili_cubuk(self, Vector2(0, 0), Vector2(0, -70), Renkler.LOLIPOP_SAP, SAP_KALINLIGI)
 	var m := Vector2(0, -86)
 	if aktif:
 		draw_circle(m, 34.0 + sin(_zaman * 3.0) * 3.0, Renkler.saydam(Renkler.ISILTI, 0.6))
