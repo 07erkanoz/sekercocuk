@@ -1,0 +1,235 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://bolumler/bolum.gd" id="1"]
+[ext_resource type="PackedScene" path="res://sahneler/platform.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://sahneler/seker.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://sahneler/jole.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://sahneler/diken.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://sahneler/cukur.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://sahneler/bitis.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://sahneler/kontrol_noktasi.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://sahneler/oyuncu.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://sahneler/lolipop.tscn" id="10"]
+
+[node name="Bolum1" type="Node2D"]
+script = ExtResource("1")
+bolum_adi = "Şeker Tepeleri"
+genislik = 6000.0
+
+[node name="Suslar" type="Node2D" parent="."]
+
+[node name="Lolipop1" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(60, 604)
+scale = Vector2(0.8, 0.8)
+rotation = -0.1
+
+[node name="Lolipop2" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(900, 604)
+scale = Vector2(0.6, 0.6)
+rotation = 0.12
+
+[node name="Lolipop3" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(1500, 604)
+scale = Vector2(0.75, 0.75)
+rotation = -0.06
+
+[node name="Lolipop4" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(2700, 604)
+scale = Vector2(0.9, 0.9)
+rotation = 0.08
+
+[node name="Lolipop5" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(3400, 604)
+scale = Vector2(0.65, 0.65)
+rotation = -0.1
+
+[node name="Lolipop6" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(4050, 604)
+scale = Vector2(0.7, 0.7)
+rotation = 0.1
+
+[node name="Lolipop7" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(5250, 604)
+scale = Vector2(0.8, 0.8)
+rotation = -0.08
+
+[node name="Lolipop8" parent="Suslar" instance=ExtResource("10")]
+position = Vector2(5930, 604)
+scale = Vector2(1.0, 1.0)
+rotation = 0.06
+
+[node name="Zemin" type="Node2D" parent="."]
+
+[node name="Zemin1" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(-40, 600)
+boyut = Vector2(1140, 200)
+
+[node name="Zemin2" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(1260, 600)
+boyut = Vector2(960, 200)
+
+[node name="Zemin3" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(2500, 600)
+boyut = Vector2(1100, 200)
+
+[node name="Zemin4" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(3760, 600)
+boyut = Vector2(1040, 200)
+
+[node name="Zemin5" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(4950, 600)
+boyut = Vector2(1090, 200)
+
+[node name="Platform1" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(2300, 535)
+tur = 1
+boyut = Vector2(130, 46)
+
+[node name="Platform2" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(2880, 470)
+tur = 2
+boyut = Vector2(200, 70)
+
+[node name="Platform3" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(4380, 500)
+tur = 1
+boyut = Vector2(150, 46)
+
+[node name="Platform4" parent="Zemin" instance=ExtResource("2")]
+position = Vector2(4580, 410)
+tur = 1
+boyut = Vector2(150, 46)
+
+[node name="Tehlikeler" type="Node2D" parent="."]
+
+[node name="Cukur" parent="Tehlikeler" instance=ExtResource("6")]
+position = Vector2(-100, 1000)
+boyut = Vector2(6300, 200)
+
+[node name="Diken1" parent="Tehlikeler" instance=ExtResource("5")]
+position = Vector2(1400, 600)
+boyut = Vector2(96, 22)
+
+[node name="Diken2" parent="Tehlikeler" instance=ExtResource("5")]
+position = Vector2(4180, 600)
+boyut = Vector2(96, 22)
+
+[node name="Dusmanlar" type="Node2D" parent="."]
+
+[node name="Jole1" parent="Dusmanlar" instance=ExtResource("4")]
+position = Vector2(1860, 578)
+mesafe = 90.0
+
+[node name="Jole2" parent="Dusmanlar" instance=ExtResource("4")]
+position = Vector2(3330, 578)
+mesafe = 160.0
+
+[node name="Sekerler" type="Node2D" parent="."]
+
+[node name="Seker1" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(400, 555)
+
+[node name="Seker2" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(480, 555)
+
+[node name="Seker3" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(560, 555)
+
+[node name="Seker4" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(800, 500)
+
+[node name="Seker5" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(880, 470)
+
+[node name="Seker6" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(960, 500)
+
+[node name="Seker7" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(1180, 450)
+
+[node name="Seker8" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(1420, 470)
+
+[node name="Seker9" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(1480, 470)
+
+[node name="Seker10" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(1600, 555)
+
+[node name="Seker11" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(1680, 555)
+
+[node name="Seker12" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(2080, 555)
+
+[node name="Seker13" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(2260, 450)
+
+[node name="Seker14" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(2365, 480)
+
+[node name="Seker15" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(2465, 450)
+
+[node name="Seker16" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(2930, 420)
+
+[node name="Seker17" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(2980, 420)
+
+[node name="Seker18" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(3030, 420)
+
+[node name="Seker19" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(3150, 555)
+
+[node name="Seker20" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(3680, 450)
+
+[node name="Seker21" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(3900, 555)
+
+[node name="Seker22" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(3980, 555)
+
+[node name="Seker23" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(4228, 460)
+
+[node name="Seker24" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(4455, 450)
+
+[node name="Seker25" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(4655, 360)
+
+[node name="Seker26" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(4740, 555)
+
+[node name="Seker27" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(4875, 450)
+
+[node name="Seker28" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(5100, 555)
+
+[node name="Seker29" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(5200, 555)
+
+[node name="Seker30" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(5300, 555)
+
+[node name="Seker31" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(5450, 500)
+
+[node name="Seker32" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(5550, 470)
+
+[node name="Seker33" parent="Sekerler" instance=ExtResource("3")]
+position = Vector2(5650, 500)
+
+[node name="KontrolNoktasi" parent="." instance=ExtResource("8")]
+position = Vector2(2620, 600)
+
+[node name="Bitis" parent="." instance=ExtResource("7")]
+position = Vector2(5800, 600)
+
+[node name="Oyuncu" parent="." instance=ExtResource("9")]
+position = Vector2(140, 560)

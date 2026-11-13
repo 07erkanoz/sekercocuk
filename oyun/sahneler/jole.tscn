@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://sahneler/jole.gd" id="1"]
+[ext_resource type="PackedScene" path="res://sahneler/gorsel/jole_gorsel.tscn" id="2"]
+
+[sub_resource type="RectangleShape2D" id="Govde"]
+size = Vector2(44, 40)
+
+[sub_resource type="RectangleShape2D" id="Vurus"]
+size = Vector2(44, 40)
+
+[node name="Jole" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1")
+
+[node name="Sekil" type="CollisionShape2D" parent="."]
+shape = SubResource("Govde")
+
+[node name="Gorsel" parent="." instance=ExtResource("2")]
+
+[node name="Vurus" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sekil" type="CollisionShape2D" parent="Vurus"]
+shape = SubResource("Vurus")

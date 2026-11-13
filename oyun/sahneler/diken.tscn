@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://sahneler/tehlike.gd" id="1"]
+[ext_resource type="PackedScene" path="res://sahneler/gorsel/diken_gorsel.tscn" id="2"]
+
+[node name="Diken" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1")
+boyut = Vector2(96, 22)
+
+[node name="Sekil" type="CollisionShape2D" parent="."]
+
+[node name="Gorsel" parent="." instance=ExtResource("2")]

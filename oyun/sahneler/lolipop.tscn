@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://sahneler/gorsel/lolipop_gorsel.tscn" id="1"]
+
+[node name="Lolipop" type="Node2D"]
+z_index = -2
+
+[node name="Gorsel" parent="." instance=ExtResource("1")]
