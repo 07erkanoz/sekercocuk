@@ -33,6 +33,14 @@ func _ready() -> void:
 	var kok := MenuKurucu.kok(self, false)
 	var kutu := MenuKurucu.panel(kok, "Şeker Dünyası", "Koş, zıpla, şekerleri topla!")
 	dugmeler.append(MenuKurucu.dugme(kutu, "Oyna", func() -> void: Gecis.bolum_baslat(0)))
+	var ses_dugmesi := MenuKurucu.dugme(kutu, "Ses: Açık", func() -> void: pass)
+	ses_dugmesi.name = "Ses"
+	var ses_yazisi := func() -> void: ses_dugmesi.text = "Ses: Açık" if Ses.acik else "Ses: Kapalı"
+	ses_yazisi.call()
+	ses_dugmesi.pressed.connect(func() -> void:
+		Ses.ac_kapat()
+		ses_yazisi.call())
+	dugmeler.append(ses_dugmesi)
 	dugmeler.append(MenuKurucu.dugme(kutu, "Çıkış", func() -> void: get_tree().quit()))
 	var ipucu := MenuKurucu.etiket("Yürü: ← → / A D / sol çubuk     Zıpla: Boşluk / ↑ / A tuşu", 20)
 	ipucu.position = Vector2(0, 664)

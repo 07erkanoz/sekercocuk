@@ -9,10 +9,22 @@ const MUZIK := "muzik.ogg"
 
 static var _onbellek := {}
 static var _muzik: AudioStreamPlayer
+## Ses açık/kapalı (ana menüdeki düğme).
+static var acik := true
+
+
+static func ac_kapat() -> void:
+	acik = not acik
+	if acik:
+		muzik_baslat()
+	else:
+		muzik_durdur()
 
 
 ## Kısa bir efekt çalar (ad uzantısız: "zipla" → zipla.wav).
 static func cal(ad: String) -> void:
+	if not acik:
+		return
 	var akis := _yukle(ad + ".wav")
 	if akis == null:
 		return
@@ -28,9 +40,18 @@ static func cal(ad: String) -> void:
 
 
 static func muzik_baslat() -> void:
+	if not acik:
+		return
 	if is_instance_valid(_muzik) and _muzik.playing:
 		return
 	var akis := _yukle(MUZIK)
+	if akis == null:
+		akis = _yukle("muzik.wav")
+		if akis is AudioStreamWAV:
+			var w := akis as AudioStreamWAV
+			w.loop_mode = AudioStreamWAV.LOOP_FORWARD
+			w.loop_begin = 0
+			w.loop_end = w.data.size() / (2 if w.format == AudioStreamWAV.FORMAT_16_BITS else 1) / (2 if w.stereo else 1)
 	if akis == null:
 		return
 	var kok := _kok()
