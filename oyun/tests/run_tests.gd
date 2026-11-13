@@ -429,19 +429,24 @@ func test_ana_menu_odak() -> void:
 	await process_frame
 	await process_frame
 	var d: Array[Button] = m.dugmeler
-	dogrula(d.size() == 2, "ana menüde Oyna ve Çıkış olmalı")
-	if d.size() == 2:
-		dogrula(d[0].text == "Oyna" and d[1].text == "Çıkış", "ana menü düğme yazıları yanlış")
+	dogrula(d.size() == 3, "ana menüde Oyna, Ses ve Çıkış olmalı")
+	if d.size() == 3:
+		dogrula(d[0].text == "Oyna" and d[2].text == "Çıkış", "ana menü düğme yazıları yanlış")
+		dogrula(d[1].text.begins_with("Ses: "), "ses düğmesi 'Ses: Açık/Kapalı' göstermeli")
+		d[1].pressed.emit()
+		dogrula(d[1].text == "Ses: Kapalı" and not Ses.acik, "ses düğmesi sesi kapatmadı")
+		d[1].pressed.emit()
+		dogrula(d[1].text == "Ses: Açık" and Ses.acik, "ses düğmesi sesi açmadı")
 		dogrula(d[0].has_focus(), "ana menüde ilk düğme odakta olmalı (kol/klavye için)")
-		dogrula(d[0].get_node(d[0].focus_neighbor_bottom) == d[1], "Oyna'dan aşağı Çıkış'a gidilmeli")
-		dogrula(d[1].get_node(d[1].focus_neighbor_bottom) == d[0], "odak sırası döngüsel olmalı")
+		dogrula(d[0].get_node(d[0].focus_neighbor_bottom) == d[1], "Oyna'dan aşağı Ses'e gidilmeli")
+		dogrula(d[2].get_node(d[2].focus_neighbor_bottom) == d[0], "odak sırası döngüsel olmalı")
 		# Klavye/kol "aşağı" olayı odağı taşır
 		var olay := InputEventAction.new()
 		olay.action = "ui_down"
 		olay.pressed = true
 		root.push_input(olay)
 		await process_frame
-		dogrula(d[1].has_focus(), "ui_down ile odak Çıkış'a geçmedi")
+		dogrula(d[1].has_focus(), "ui_down ile odak Ses'e geçmedi")
 
 
 func test_duraklatma_menusu() -> void:
