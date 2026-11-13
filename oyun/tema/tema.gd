@@ -36,6 +36,12 @@ static func olustur() -> Theme:
 	t.set_stylebox("panel", "PanelContainer", panel_kutusu())
 	t.set_stylebox("panel", "Panel", panel_kutusu())
 	t.set_color("font_color", "Label", Renkler.MUREKKEP)
+	# Oyun içinde uçuşan puan / bilgi yazısı (+100, Gizli köşe! ...).
+	t.set_type_variation("PuanYazisi", "Label")
+	t.set_font_size("font_size", "PuanYazisi", 30)
+	t.set_color("font_color", "PuanYazisi", Renkler.MUREKKEP)
+	t.set_color("font_outline_color", "PuanYazisi", Renkler.KREM)
+	t.set_constant("outline_size", "PuanYazisi", 10)
 	_tema = t
 	return t
 

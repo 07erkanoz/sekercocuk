@@ -13,6 +13,8 @@ var hiz := Vector2.ZERO
 var yerde := true
 
 var _spr: AnimatedSprite2D
+## Esneme-sıkışma: zıplarken uzar, inerken yassılır; hızla 1'e döner. Ölçek tabandan uygulanır.
+var esneme := Vector2.ONE
 
 
 func _ready() -> void:
@@ -64,9 +66,15 @@ func _anim(kareler: SpriteFrames, ad: String, dokular: Array, fps: float) -> voi
 			kareler.add_frame(ad, t)
 
 
-func _process(_delta: float) -> void:
+func esne(olcek: Vector2) -> void:
+	esneme = olcek
+
+
+func _process(delta: float) -> void:
 	if _spr == null:
 		return
+	esneme = esneme.lerp(Vector2.ONE, minf(delta * 12.0, 1.0))
+	_spr.scale = Vector2(OLCEK, OLCEK) * esneme
 	var ad := "zipla" if not yerde else ("kos" if absf(hiz.x) > 20.0 else "bekle")
 	if _spr.animation != ad:
 		_spr.play(ad)

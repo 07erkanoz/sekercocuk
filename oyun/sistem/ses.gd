@@ -1,7 +1,7 @@
 class_name Ses
 extends RefCounted
 ## Ses yardımcısı. varliklar/ses/ altındaki dosyalar varsa çalar, yoksa sessizce geçer.
-## Beklenen dosyalar: zipla.wav, seker.wav, hasar.wav, bitis.wav, dugme.wav, muzik.ogg
+## Beklenen dosyalar: zipla, seker, hasar, bitis, dugme, kutu, yay, ezme, kalp (.wav), muzik.ogg
 ## Kullanım: Ses.cal("zipla"), Ses.muzik_baslat(), Ses.muzik_durdur()
 
 const KLASOR := "res://varliklar/ses/"
