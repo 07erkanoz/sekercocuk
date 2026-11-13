@@ -22,7 +22,7 @@ func _draw() -> void:
 		_:
 			var z := Doku.yukle("zemin")
 			if z != null:
-				var renk := Color.WHITE if tur == 0 else Color(1.0, 0.7, 0.85)
+				var renk := Renkler.BEYAZ if tur == 0 else Renkler.PLATFORM_PINK
 				# Üst sıra kremalı; altı kremasız kısımla döşenir (krema tekrarlanmasın).
 				var x := 0.0
 				while x < boyut.x:
