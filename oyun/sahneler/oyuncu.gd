@@ -43,6 +43,7 @@ var _zipliyor := false
 
 
 func _ready() -> void:
+	Hiza.gorseli_tabana_oturt(self)
 	kontrol_noktasi = global_position
 
 

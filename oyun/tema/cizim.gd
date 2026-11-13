@@ -76,6 +76,17 @@ static func cubuk(ci: CanvasItem, a: Vector2, b: Vector2, renk: Color, kalinlik:
 	cizgi(ci, a, b, renk, kalinlik)
 
 
+## Zemine dikili çubuk: yuvarlak alt ucun görünen dibi tam "taban"da olur (bkz. tema/hiza.gd).
+static func dikili_cubuk(ci: CanvasItem, taban: Vector2, tepe: Vector2, renk: Color, kalinlik: float) -> void:
+	var a := taban + (tepe - taban).normalized() * cubuk_yaricapi(kalinlik)
+	cubuk(ci, a, tepe, renk, kalinlik)
+
+
+## cubuk() ile çizilen çubuğun mürekkep kenarı dahil yarı kalınlığı.
+static func cubuk_yaricapi(kalinlik: float) -> float:
+	return (kalinlik + KALINLIK * 2.0) * 0.5
+
+
 ## Dört köşeli parıltı yıldızı.
 static func parilti(ci: CanvasItem, merkez: Vector2, boy: float, renk: Color) -> void:
 	var k := boy * 0.25

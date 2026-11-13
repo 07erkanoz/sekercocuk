@@ -45,6 +45,8 @@ func _calistir() -> void:
 		"test_bolum_listesi",
 		"test_bolum_1_yapisi",
 		"test_bolum_1_bastan_sona_oynanabilir",
+		"test_zemine_basma_hareketliler",
+		"test_zemine_basma_sabit_nesneler",
 		"test_ana_menu_odak",
 		"test_duraklatma_menusu",
 		"test_sonuc_ekranlari_odak",
@@ -487,3 +489,119 @@ func test_ses_dosyasiz_sessiz() -> void:
 	Ses.muzik_baslat()
 	Ses.muzik_durdur()
 	dogrula(true, "")
+
+
+# --- Zemine basma (hiza) testleri ----------------------------------------------
+# Kural tema/hiza.gd'de. Ölçüm: görselin gerçekten çizdiği dokunun saydam olmayan alanı
+# (Hiza.gorunen) ile zemin görselinin görünen üst kenarı, dünya koordinatında piksel olarak.
+
+const HIZA_TOLERANSI := 1.0
+
+
+func _bolum_1_kur() -> Bolum:
+	var b := (load(BolumListesi.BOLUMLER[0]) as PackedScene).instantiate() as Bolum
+	b.set_meta("test_dugumu", true)
+	root.add_child(b)
+	await kare(3)
+	return b
+
+
+## Nesnenin görselinin görünen alt kenarı (alt kenarın ortası, dünya y'si).
+func _gorunen_alt(n: Node2D) -> float:
+	var g := n.get_node("Gorsel") as Node2D
+	var r: Rect2 = g.call("gorunen_alan")
+	dogrula(r.has_area(), "%s görünen alanı boş" % n.name)
+	return (g.get_global_transform() * Vector2(r.get_center().x, r.end.y)).y
+
+
+func _platformlar(n: Node, liste: Array = []) -> Array:
+	for c in n.get_children():
+		if c is Platform:
+			liste.append(c)
+		_platformlar(c, liste)
+	return liste
+
+
+## x'teki, y'nin hemen altındaki (ya da biraz üstündeki) zeminin görünen üst kenarı (dünya y'si).
+func _alttaki_zemin_ustu(b: Node, x: float, y: float) -> float:
+	var en_iyi := INF
+	for p in _platformlar(b):
+		var g := (p as Node2D).get_node("Gorsel") as Node2D
+		var r: Rect2 = g.get_global_transform() * g.call("gorunen_alan")
+		if x >= r.position.x and x <= r.end.x and r.position.y >= y - 8.0 and r.position.y < en_iyi:
+			en_iyi = r.position.y
+	return en_iyi
+
+
+func _basiyor_mu(b: Node, n: Node2D, ne: String) -> void:
+	var alt := _gorunen_alt(n)
+	var ust := _alttaki_zemin_ustu(b, n.global_position.x, alt)
+	dogrula(ust < INF, "%s (%s) altında zemin yok (x=%.0f)" % [ne, n.name, n.global_position.x])
+	if ust == INF:
+		return
+	var bosluk := ust - alt
+	dogrula(absf(bosluk) <= HIZA_TOLERANSI,
+		"%s (%s) zemine basmıyor: görünen alt %.2f, zemin üstü %.2f, boşluk %.2f px" % [ne, n.name, alt, ust, bosluk])
+
+
+## Oyuncu ve jöle; bölüm 1'in zemininde ve bir kurabiye platformda.
+func test_zemine_basma_hareketliler() -> void:
+	var b: Bolum = await _bolum_1_kur()
+	var o := b.oyuncu
+	await kare(40)
+	dogrula(o.is_on_floor(), "oyuncu başlangıç zemininde yerde değil")
+	_basiyor_mu(b, o, "oyuncu/zemin")
+	# Koşarken her karede de basmalı.
+	Input.action_press("sag")
+	for i in 30:
+		await physics_frame
+		if o.is_on_floor():
+			_basiyor_mu(b, o, "oyuncu/koşu")
+	Input.action_release("sag")
+
+	var p1 := b.get_node("Zemin/Platform1") as Platform
+	o.global_position = p1.global_position + Vector2(p1.boyut.x * 0.5, -40.0)
+	o.velocity = Vector2.ZERO
+	await kare(40)
+	dogrula(o.is_on_floor(), "oyuncu platformda yerde değil")
+	_basiyor_mu(b, o, "oyuncu/platform")
+
+	var j_zemin: Jole = null
+	for n in get_nodes_in_group("dusman"):
+		if b.is_ancestor_of(n):
+			j_zemin = n
+			break
+	await kare(10)
+	dogrula(j_zemin.is_on_floor(), "jöle zeminde yerde değil")
+	_basiyor_mu(b, j_zemin, "jöle/zemin")
+
+	var p2 := b.get_node("Zemin/Platform2") as Platform
+	var j := ekle(b, JOLE, p2.global_position + Vector2(p2.boyut.x * 0.5, -30.0), {"mesafe": 30.0}) as Jole
+	await kare(40)
+	dogrula(j.is_on_floor(), "jöle platformda yerde değil")
+	for i in 20:
+		await physics_frame
+		_basiyor_mu(b, j, "jöle/platform")
+
+
+## Bitiş, kontrol noktaları, dikenler ve süsler bölüm 1'de zeminin görünen üst kenarında.
+func test_zemine_basma_sabit_nesneler() -> void:
+	var b: Bolum = await _bolum_1_kur()
+	var sayac := {"bitis": 0, "kontrol": 0, "diken": 0, "sus": 0}
+	for n in b.find_children("*", "Node2D", true, false):
+		var g := n.get_node_or_null("Gorsel")
+		if g == null or not g.has_method("gorunen_alan"):
+			continue
+		if n is Bitis:
+			sayac.bitis += 1
+		elif n is KontrolNoktasi:
+			sayac.kontrol += 1
+		elif n is Tehlike:
+			sayac.diken += 1
+		elif n.get_parent().name == "Suslar":
+			sayac.sus += 1
+		else:
+			continue
+		_basiyor_mu(b, n, "sabit nesne")
+	dogrula(sayac.bitis == 1 and sayac.kontrol >= 2 and sayac.diken >= 2 and sayac.sus >= 1,
+		"sabit nesneler bulunamadı: %s" % [sayac])

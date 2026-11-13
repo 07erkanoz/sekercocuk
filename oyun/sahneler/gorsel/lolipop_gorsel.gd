@@ -5,7 +5,7 @@ extends Node2D
 
 
 func _draw() -> void:
-	Cizim.cubuk(self, Vector2(0, 0), Vector2(0, -180), Renkler.LOLIPOP_SAP, 10.0)
+	Cizim.dikili_cubuk(self, Vector2(0, 0), Vector2(0, -180), Renkler.LOLIPOP_SAP, 10.0)
 	var m := Vector2(0, -186)
 	Cizim.daire(self, m, 62.0, Renkler.LOLIPOP_DIS, 5.0)
 	Cizim.daire(self, m, 49.0, Renkler.LOLIPOP_IC, 0.0)
@@ -16,3 +16,8 @@ func _draw() -> void:
 		sarmal.append(m + Vector2(cos(a), sin(a)) * (4.0 + t * 40.0))
 	draw_polyline(sarmal, Renkler.LOLIPOP_SARMAL, 13.0, true)
 	draw_arc(m, 46.0, PI * 1.1, PI * 1.5, 12, Renkler.saydam(Renkler.BEYAZ, 0.7), 7.0, true)
+
+
+## Görünen alan (yerel): sap tabanı y=0.
+func gorunen_alan() -> Rect2:
+	return Rect2(-64.5, -186.0 - 64.5, 129.0, 186.0 + 64.5)
