@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Şeker Dünyası · Taslak B</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#79e7df}body{display:grid;place-items:center}svg{display:block;width:100vw;height:100vh;object-fit:contain} .ink{stroke:#21172d;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.thin{stroke-width:3}.shine{fill:none;stroke:white;stroke-width:7;stroke-linecap:round;opacity:.7}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" role="img" aria-labelledby="title desc">
+<title id="title">Şeker Dünyası oyun içi görsel taslağı</title>
+<desc id="desc">Pembe ve turkuaz gökyüzü altında lolipop ağaçları, kurabiye ve jöle platformlar. Pelerinli küçük kahraman, parlayan şekerleri toplamaya giderken sevimli bir jöleyle karşılaşıyor. Üstte sekiz şeker ve üç kalp gösteriliyor.</desc>
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#ffb1dc"/><stop offset=".48" stop-color="#ffd3e8"/><stop offset="1" stop-color="#8df0e2"/></linearGradient>
+ <linearGradient id="jelly" x2="0" y2="1"><stop stop-color="#c0ff78"/><stop offset="1" stop-color="#5ed958"/></linearGradient>
+ <linearGradient id="pink" x2="0" y2="1"><stop stop-color="#ff9ddc"/><stop offset="1" stop-color="#ed48b5"/></linearGradient>
+ <linearGradient id="dough" x2="0" y2="1"><stop stop-color="#ffc16b"/><stop offset="1" stop-color="#df8549"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fffbb0" stop-opacity=".95"/><stop offset="1" stop-color="#fff6a7" stop-opacity="0"/></radialGradient>
+ <pattern id="crumb" width="58" height="48" patternUnits="userSpaceOnUse"><path d="m12 13 5 2m27 19 3-3" stroke="#b76b3e" stroke-width="4" stroke-linecap="round"/><circle cx="31" cy="8" r="2.5" fill="#ffd591"/></pattern>
+ <g id="cloud" fill="#fff6f1"><path d="M0 38C-10 19 8 4 27 12 29-10 65-13 77 9 96-1 117 11 115 29 141 24 153 50 133 57H12C2 57-7 47 0 38Z"/><path d="M14 66h77" stroke="#fff6f1" stroke-width="6" stroke-linecap="round" opacity=".55"/></g>
+ <g id="spark" fill="#fff9cf"><path d="M0-12 3-3 12 0 3 3 0 12-3 3-12 0-3-3Z"/></g>
+ <g id="candy" class="ink"><circle r="39" fill="url(#glow)" stroke="none"/><path d="m-14-9-17-7 2 19 16 3m27-15 17-7-2 19-16 3" fill="#fff29a"/><rect x="-19" y="-14" width="38" height="29" rx="12" fill="#ffd84c"/><path d="m-6-12-6 24m20-23L2 13" stroke="#ff8c44" stroke-width="7"/><path d="m-8-7 7-2" stroke="white" stroke-width="4"/></g>
+ <g id="heart"><path d="M0 23C-7 17-23 8-23-5-23-23-5-25 0-12 8-26 25-20 24-5 23 8 7 18 0 23Z" fill="#ff658b" class="ink"/><path d="M-15-8q2-7 8-5" class="shine" style="stroke-width:4"/></g>
+ <g id="lollipop" class="ink"><path d="M0 0V187" fill="none" stroke="#21172d" stroke-width="19"/><path d="M0 0V184" fill="none" stroke="#fff6da" stroke-width="10"/><circle r="65" fill="#ff749b"/><circle r="51" fill="#ffd572"/><path d="M-48 7C-55-39 9-59 32-24 57 12 4 47-18 21-37-1-9-27 9-13 24-1 9 12 0 5" fill="none" stroke="#ff679a" stroke-width="15"/><path d="M-44-22q12-21 34-23" class="shine"/></g>
+ <g id="cookie" class="ink"><rect width="177" height="49" rx="21" fill="url(#dough)"/><path d="M17 26h143" stroke="#b96b39" stroke-width="3" stroke-dasharray="3 16"/><path d="M8 15C8-1 25-8 42-5h98c25-3 34 10 28 24-3 8-14 9-20 2-5-7-11-8-17 1-5 9-16 9-22 0-6-8-13-9-18 0-6 10-18 9-23 0-5-8-10-9-16-1-6 9-17 7-22 0C20 31 9 26 8 15Z" fill="#fff2da"/><path d="m36 2 8 3m30-7 5 5m34-4 8 1m18 5 4-4" stroke="#f3659f" stroke-width="4"/></g>
+</defs>
+<!-- Pastel sky and distant confectionery hills -->
+<path fill="url(#sky)" d="M0 0h1280v720H0z"/>
+<circle cx="1080" cy="141" r="67" fill="#fff4ae" opacity=".8"/>
+<g opacity=".9"><use href="#cloud" transform="translate(221 137) scale(.95)"/><use href="#cloud" transform="translate(694 77) scale(.78)"/><use href="#cloud" transform="translate(1086 220) scale(.76)"/><use href="#cloud" transform="translate(-44 243) scale(.8)"/></g>
+<g fill="none" stroke-linecap="round" opacity=".65"><path d="M818 409a180 180 0 0 1 360 0" stroke="#ff98c4" stroke-width="27"/><path d="M843 409a155 155 0 0 1 310 0" stroke="#ffe79d" stroke-width="23"/><path d="M866 409a132 132 0 0 1 264 0" stroke="#b7f9e6" stroke-width="23"/></g>
+<path d="M0 436Q105 318 228 422Q352 247 488 436Q614 333 733 430Q897 286 1050 429Q1173 335 1280 399V720H0Z" fill="#c5a2eb"/>
+<path d="M0 486Q141 359 278 479Q455 324 622 484Q781 353 941 479Q1114 345 1280 475V720H0Z" fill="#84d9ce"/>
+<path d="M0 536Q123 433 262 524Q447 416 617 538Q817 434 1006 529Q1152 451 1280 516V720H0Z" fill="#5ec9b3"/>
+<g fill="#c8f6c9" opacity=".65"><ellipse cx="389" cy="466" rx="14" ry="29" transform="rotate(42 389 466)"/><ellipse cx="634" cy="489" rx="12" ry="24" transform="rotate(-30 634 489)"/><ellipse cx="970" cy="492" rx="13" ry="25" transform="rotate(40 970 492)"/></g>
+<!-- Lollipop grove, drawn behind the traversable route -->
+<use href="#lollipop" transform="translate(115 347) rotate(-12) scale(.95)"/>
+<use href="#lollipop" transform="translate(383 324) rotate(10) scale(.67)"/>
+<use href="#lollipop" transform="translate(1189 325) rotate(8) scale(1.04)"/>
+<g class="ink"><path d="m1068 487 12-119q4-21 24-17 20 4 16 23l-18 116" fill="#fff8e0"/><path d="m1082 365 34 19m-36 7 33 18m-36 8 32 17m-35 9 32 16" fill="none" stroke="#ff719c" stroke-width="12"/></g>
+<!-- Ground islands: cookie interiors with thick icing lips -->
+<g class="ink">
+ <path d="M-25 555H367V742H-25Z" fill="url(#dough)"/><path d="M-25 555H367V742H-25Z" fill="url(#crumb)" stroke="none"/>
+ <path d="M-20 545Q-5 528 16 537l324-2q37 0 38 25-2 22-21 19-18-3-20-15-15 0-18 18-5 23-24 13-11-6-10-26h-37q-7 26-25 17-10-4-13-17h-30q-7 19-22 15-13-2-15-15h-33q-4 31-24 22-13-5-14-21H37q-8 20-24 14-13-4-15-16h-18Z" fill="#ff85ca"/>
+ <path d="M943 505h362v237H943Z" fill="url(#dough)"/><path d="M943 505h362v237H943Z" fill="url(#crumb)" stroke="none"/>
+ <path d="M943 498q0-20 23-20h339v47l-26 2q-6 25-23 17-11-4-13-20h-30q-8 23-24 16-10-4-12-16h-32q-7 33-26 23-12-5-12-23h-31q-8 19-23 13-8-3-12-13h-25q-2 27-20 22-14-4-14-22h-24q-17 4-17-26Z" fill="#ff85ca"/>
+</g>
+<g stroke-linecap="round" stroke-width="5"><path d="m25 550 10 2m39-3 5 7m45-10 9 2m41 3 7-3m43 1 6 5m44-7 8 1m37-1 5 5m660-57 8 3m34-5 4 7m38-7 8 2m37-2 5 7m36-5 9 1m35-2 5 7m39-5 8 2" stroke="#fff4b7"/></g>
+<!-- Floating stepping platforms -->
+<use href="#cookie" transform="translate(407 477) rotate(-3)"/>
+<g class="ink"><path d="M658 418q0-19 20-19h160q22 0 22 22v39q-5 25-30 25H687q-29-2-29-28Z" fill="url(#jelly)"/><path d="M665 420q22 16 40 0 20 17 39 0 22 17 41 0 22 17 43 0 15 10 25-1" fill="none" stroke="#329c48" stroke-width="3"/><path d="M679 410h142" class="shine" style="stroke-width:5"/><path d="M674 446v9m169-12v10" stroke="#cfff8c"/></g>
+<!-- Sparkling candy pickups form a clear jumping arc -->
+<g><use href="#candy" transform="translate(326 431) rotate(-16)"/><use href="#candy" transform="translate(459 369) rotate(9)"/><use href="#candy" transform="translate(578 335) rotate(-12)"/><use href="#candy" transform="translate(727 306) rotate(10)"/><use href="#candy" transform="translate(934 355) rotate(-8)"/><use href="#candy" transform="translate(1088 406) rotate(12)"/></g>
+<g><use href="#spark" transform="translate(303 393) scale(.65)"/><use href="#spark" transform="translate(486 339) scale(.6)"/><use href="#spark" transform="translate(600 300) scale(.85)"/><use href="#spark" transform="translate(752 269) scale(.7)"/><use href="#spark" transform="translate(912 317) scale(.75)"/><use href="#spark" transform="translate(1119 377) scale(.7)"/></g>
+<!-- Small brave hero with oversized eyes, neckerchief, and boots -->
+<ellipse cx="222" cy="540" rx="53" ry="11" fill="#753e55" opacity=".25"/>
+<g class="ink">
+ <path d="M201 461q-42-13-62 19l-21 28q28-4 46 7l39-31" fill="#ff5b72"/><path d="m145 491 29-14" fill="none" stroke="#ce365b" stroke-width="3"/>
+ <path d="M194 494q-19 24-12 38h30l13-27m12-9 9 33h26q10-12-16-35" fill="#2bb9cb"/>
+ <path d="M180 525q-11 9-6 16h40v-15m31-1v16h39q6-15-17-16" fill="#fff1c4"/>
+ <path d="M190 461q-17 20-9 43 23 21 66 2 16-11 2-48" fill="#40d7d5"/>
+ <path d="m244 477 22-18q10-9 17 1 5 9-5 17l-23 17" fill="#40d7d5"/>
+ <path d="m185 481-14 13q-13 7-16-4-1-8 18-22" fill="#40d7d5"/>
+ <path d="M176 417q-15-28 0-38 14-8 29 18 15-5 30 0 23-25 35-12 9 12-4 34 14 19 7 43-11 27-51 27-45 0-55-24-10-25 9-48Z" fill="#4ce1df"/>
+ <path d="m182 404-5-14m72 14 12-12" stroke="#22a4b5" stroke-width="5"/>
+ <ellipse cx="202" cy="436" rx="18" ry="24" fill="white"/><ellipse cx="243" cy="434" rx="18" ry="24" fill="white"/>
+ <ellipse cx="208" cy="440" rx="9" ry="13" fill="#21172d" stroke="none"/><ellipse cx="248" cy="438" rx="9" ry="13" fill="#21172d" stroke="none"/>
+ <g fill="white" stroke="none"><circle cx="211" cy="435" r="4"/><circle cx="251" cy="433" r="4"/></g>
+ <path d="m196 405 12-3m28 0 13 2" fill="none" stroke-width="4"/>
+ <path d="M215 463q12 15 25-3" fill="#fff8e4" stroke-width="3"/>
+ <ellipse cx="183" cy="457" rx="9" ry="5" fill="#ff8eb8" stroke="none"/><ellipse cx="262" cy="454" rx="7" ry="5" fill="#ff8eb8" stroke="none"/>
+ <path d="m185 477 32 10 32-12-3 16-28 9-29-9Z" fill="#ffd24a"/><path d="m216 489-8 24 19-7 9-18" fill="#ffbf38"/>
+</g>
+<!-- Friendly bouncing jelly, with its shadow on the green platform -->
+<ellipse cx="803" cy="400" rx="40" ry="8" fill="#307c4e" opacity=".25"/>
+<g class="ink"><path d="M765 371q-2-54 36-55 40-3 44 54 13 18-2 22-10 3-17-5-9 14-21 3-13 12-24 0-12 11-22 1-6-8 6-20Z" fill="url(#pink)"/><path d="M777 346q4-16 16-18" class="shine" style="stroke-width:6"/><ellipse cx="790" cy="361" rx="5" ry="8" fill="#21172d" stroke="none"/><ellipse cx="817" cy="361" rx="5" ry="8" fill="#21172d" stroke="none"/><path d="M799 374q5 5 10-1" fill="none" stroke-width="3"/><path d="m773 372 7 1m44-1 7-1" stroke="#ffb7df" stroke-width="5"/></g>
+<!-- Candy finish marker -->
+<g class="ink"><path d="M1192 479V391" stroke="#fff7d9" stroke-width="10"/><path d="M1192 386q29-22 57-4v49q-29-18-57 4Z" fill="#ffdf55"/><path d="m1210 407 8 8 14-15" fill="none" stroke-width="5"/><circle cx="1192" cy="383" r="7" fill="#fff6d1"/></g>
+<!-- Foreground frosting and tiny candy plants -->
+<g class="ink"><path d="M21 720v-51m0 25q-31-4-24-22 21-5 24 22m0-9q2-29 23-22 8 17-23 22" fill="#72e886"/><path d="M1213 720v-46m0 22q-29-4-24-20 19-7 24 20m0-8q3-29 23-19 4 15-23 19" fill="#72e886"/>
+<path d="M62 720q-2-29 17-29 19 0 18 29m14 0q-2-45 20-45 24 0 22 45" fill="#ffadd7"/>
+<path d="M1111 720q-2-30 16-30 20 0 19 30m10 0q-3-46 20-46 22 0 21 46" fill="#bc8de4"/></g>
+<g fill="#ffefb2"><circle cx="55" cy="623" r="5"/><circle cx="303" cy="650" r="5"/><circle cx="1000" cy="602" r="5"/><circle cx="1193" cy="580" r="5"/></g>
+<!-- Large icon-only HUD -->
+<g class="ink">
+ <rect x="29" y="32" width="218" height="83" rx="29" fill="#21172d" opacity=".13" stroke="none"/>
+ <rect x="28" y="25" width="218" height="83" rx="29" fill="#fff8e5"/>
+ <use href="#candy" transform="translate(81 66) rotate(-12) scale(.95)"/>
+ <text x="130" y="84" fill="#21172d" stroke="none" font-family="sans-serif" font-size="47" font-weight="900">08</text>
+ <rect x="264" y="32" width="220" height="83" rx="29" fill="#21172d" opacity=".13" stroke="none"/>
+ <rect x="263" y="25" width="220" height="83" rx="29" fill="#fff8e5"/>
+ <use href="#heart" transform="translate(308 65) scale(.9)"/><use href="#heart" transform="translate(373 65) scale(.9)"/><use href="#heart" transform="translate(438 65) scale(.9)"/>
+ <rect x="1175" y="32" width="77" height="77" rx="26" fill="#21172d" opacity=".13" stroke="none"/>
+ <rect x="1174" y="25" width="77" height="77" rx="26" fill="#fff8e5"/>
+ <path d="M1203 51v26m19-26v26" stroke-width="9"/>
+</g>
+</svg>
+</body>
+</html>
